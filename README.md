@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Ga6i
 - 👀 I’m interested in Fullstack development and cyber security
-- 🌱 I’m currently learning Python
-- 💞️ I’m looking to collaborate on various python projects to help sharpen my skills.
+- 🌱 I’m currently learning Java, but have an understanding of Python and SQL. 
+- 💞️ I’m looking to collaborate on various python and web development(Weblfow, HTml, CSS and JavaScript) projects to help sharpen my skills.
 - 📫 How to reach me ...pebetse.rakgotsoka@gmail.com
 
 <!---
