@@ -1,0 +1,186 @@
+Project Management System
+
+A Java  application for a Product Management System that manages a collection of products using arrays or alternatively array lists.  
+This project focuses on Java and data storage using data structures. Users will get a chance to work with Java's built-in classes and methods to create a functional Product Management System as a console application. 
+
+Users can add new products to the collection. 
+Users can edit and update existing product details. 
+Users can remove products from the collection. 
+Users can view a list of all products and display the information they have entered for each product. 
+
+#Java application
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package productmanagementsystem;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Gabriella Rakgotsoka
+ */
+#Product class representing a product with properties like ProductID, Name, Price, Quantity, and methods to get and set these properties. 
+class Product {
+    private int productID;
+    private String name;
+    private double price;
+    private int quantity;
+    
+    public Product(int productID,String name, double price,int quantity){
+    this.productID =productID;
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+}
+    public int getProductID(){
+        return productID;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+    this.name = name;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    
+    public void setPrice(int price){
+    this.price = price;
+    }
+    
+    public int getQuantity(){
+        return quantity;
+    }
+    
+    public void setQuantity(int quantity){
+    this.quantity = quantity;
+    }
+    
+    @Override
+     public String toString(){
+     
+        return "ProductID: " +productID + " , Name: " + name + " , Price : " + price + " , Quantity : " + quantity; 
+     
+     }
+}
+
+#ProductManagement class that manages an array of products and provides methods to add, edit, remove, and view products. 
+class ProductManagement {
+    private Product[]products;
+private int productCount;
+
+//constructor of StudentMgmt
+public ProductManagement(int maxSize){
+products = new Product[maxSize];
+productCount =0;
+}
+
+public void addProduct(String name,double price, int quantity){
+if(productCount < products.length){
+products[productCount] = new Product(productCount + 1,name,price,quantity);
+productCount++;
+    System.out.println("product added successfully");
+}else{
+    System.out.println("Cannot add more products");
+}
+}
+
+public void editProduct(int productID,String name,double price,int quantity){
+for(int i =0; i< productCount;i++){
+if(products[i].getProductID() == productID){
+products[i].setName(name);
+products[i].setPrice(price);
+products[i].setQuantity(quantity);
+    System.out.println("Updated");
+    return;
+}
+}
+}
+
+public void viewProducts(){
+if (productCount == 0){
+    System.out.println("There are no products to display");
+}else{
+for(int i =0;i < productCount;i++){
+    System.out.println(products[i]);
+}
+
+}
+}
+}
+
+#Main class, which is the entry point of the program, including the main method, to interact with the system. 
+public class ProductManagementSystem {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ProductManagement sm =new ProductManagement(5);
+        Scanner sc = new Scanner(System.in);
+        
+        while(true){
+            System.out.println("Welcome to the Product Management System");
+            System.out.println("1.Add Product");
+            System.out.println("2.Edit Productt");
+            System.out.println("3.Remove Productt");
+            System.out.println("4.View Products");
+            System.out.println("5.Exit");
+            System.out.println("Select an option");
+            
+            int option = sc.nextInt();
+            sc.nextLine();
+            
+            switch(option){
+                case 1:
+                    System.out.println("Enter product name: ");  
+                    String name =sc.nextLine();
+                    System.out.println("Enter product price: ");
+                    double price = sc.nextInt();
+                    System.out.println("Enter product quantity: ");
+                    int quantity =sc.nextInt();
+                    sm.addProduct(name, price, quantity);
+                    break;
+                case 2:
+                    System.out.println("Enter product ID to edit ");
+                    int editID =sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Enter product name: ");  
+                    String newname =sc.nextLine();
+                    System.out.println("Enter product price: ");
+                    double newprice = sc.nextDouble();
+                    System.out.println("Enter product quantity: ");
+                    int newquantity =sc.nextInt();
+                    sm.editProduct(editID, newname, newprice, newquantity);
+                    break;
+                case 3:
+                     System.out.println("Enter product ID to delete ");
+                        int deleteID =sc.nextInt();
+                        //method to call to delete
+                        break;
+                case 4:
+                    System.out.println("List of entered products");
+                    //method to view students
+                    sm.viewProducts();
+                    break;
+                case 5:
+                    System.exit(0);
+                default:
+                    System.out.println("Enter valid option");
+                    
+                        
+            }
+            
+            
+        }
+        
+    }
+    
+}
+
